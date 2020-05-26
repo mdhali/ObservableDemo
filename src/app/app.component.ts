@@ -30,9 +30,9 @@ export class AppComponent implements OnInit {
       let count: number = 0;
       setInterval(() => {
         observer.next(count);
-        if(count === 3){
+        /* if (count === 3) {
           observer.complete();
-        }
+        } */
         if (count > 5) {
           observer.error(new Error('Count is more than 5'));
         }
@@ -41,16 +41,26 @@ export class AppComponent implements OnInit {
 
     });
 
-
+    //General Subscription
     //this.subscription = data.subscribe(arg => console.log("inside subscription " + arg));
 
-    this.subscriptionWithError = dataWithError.subscribe(arg => console.log("inside subscription with Error" + arg),
-      error => {
+    //Subscription using ForEach
+    //this.subscription = data.forEach(arg => console.log("inside subscription " + arg));
+
+    //Subscription for Observables with Errors/Completions
+    /* this.subscriptionWithError = dataWithError.subscribe((arg: string) => console.log("inside subscription with Error" + arg),
+      (error: { message: string; }) => {
         console.log(error);
         alert(error.message);
       }, () => {
         console.log("Completed!");
-      });
+      }); */
+
+    //Subscription using ForEach
+    //this.subscriptionWithError = dataWithError.forEach((arg: string) => console.log("inside subscription with Error" + arg));
+
+    //Subscription with filters & Maps
+    //this.subscription = data.filter((arg) => arg.index > 2).subscribe(arg => console.log("inside subscription " + arg));
 
   }
 
